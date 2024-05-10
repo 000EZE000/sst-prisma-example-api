@@ -17,6 +17,7 @@
     "aws-cdk-lib": "2.132.1",
     "constructs": "10.3.0",
     "prisma": "^5.13.0",
+    "semantic-release": "^23.1.1",
     "sst": "^2.41.5",
     "typescript": "^5.4.5"
   },
@@ -25,11 +26,44 @@
   ],
   "dependencies": {
     "@prisma/client": "^5.13.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^12.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.3",
+    "@semantic-release/npm": "^12.0.0",
+    "@semantic-release/release-notes-generator": "^13.0.0",
+    "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.12.11",
     "inversify": "^6.0.2",
     "reflect-metadata": "^0.2.2"
   },
   "prisma": {
     "schema": "src/common/db_orm/prisma/schema.prisma"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "repositoryUrl": "https://github.com/000EZE000/sst-prisma-example-api",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "docs/CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}",
+          "assets": [
+            "docs/CHANGELOG.md"
+          ]
+        }
+      ],
+      "@semantic-release/github"
+    ]
   }
 }

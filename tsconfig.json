@@ -1,0 +1,20 @@
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "exclude": ["packages"],
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@tasks/*": ["./src/Tasks/*"],
+      "@common/*": ["./src/common/*"]
+    },
+    "module": "esnext",
+    "lib": ["es6", "dom"],
+    "target": "ES2016",
+    "strict": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  }
+}

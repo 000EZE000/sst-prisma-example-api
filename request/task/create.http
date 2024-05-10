@@ -1,0 +1,7 @@
+POST {{URL}}/task/create
+Content-type:application/json
+
+{
+  "title":"cocinar",
+  "description":"con fideos, cocina"
+}

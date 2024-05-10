@@ -1,0 +1,8 @@
+PUT {{URL}}/task/update
+Content-type:application/json
+
+{
+  "id":"088bd6d1-126a-459f-b460-765cf43b8cf2",
+  "title":"cocinar",
+  "description":"con arroz, cocina"
+}

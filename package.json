@@ -1,0 +1,35 @@
+{
+  "name": "tasks-api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sst dev",
+    "build": "sst build",
+    "deploy": "sst deploy",
+    "remove": "sst remove",
+    "console": "sst console",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.4",
+    "@types/fs-extra": "^11.0.4",
+    "aws-cdk-lib": "2.132.1",
+    "constructs": "10.3.0",
+    "prisma": "^5.13.0",
+    "sst": "^2.41.5",
+    "typescript": "^5.4.5"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@prisma/client": "^5.13.0",
+    "@types/node": "^20.12.11",
+    "inversify": "^6.0.2",
+    "reflect-metadata": "^0.2.2"
+  },
+  "prisma": {
+    "schema": "src/common/db_orm/prisma/schema.prisma"
+  }
+}

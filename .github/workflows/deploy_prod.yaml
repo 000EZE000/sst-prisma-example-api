@@ -28,8 +28,5 @@ jobs:
           node-version: "lts/*"
       - name: Install dependencies
         run: npm install
-      - name: Release
-        id: semantic
-        run: npx sst secrets list
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy API
+        run: npx sst deploy api --stage=prod

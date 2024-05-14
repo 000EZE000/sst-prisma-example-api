@@ -7,6 +7,7 @@ jobs:
   release:
     name: Init deploy
     runs-on: ubuntu-latest
+    environment: prod
     permissions:
       contents: write
       issues: write
@@ -33,8 +34,8 @@ jobs:
           TEST: ${{ secrets.TEST }}
         # run: npx sst deploy api --stage=prod
         run: |
-          echo $TEST
-          echo tessssss
+          echo ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          echo ${{ secrets.TEST }}
           echo $TEST
           echo tessssss
           echo tessssss

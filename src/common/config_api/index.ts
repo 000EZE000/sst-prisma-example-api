@@ -2,7 +2,12 @@ import { Api, StackContext } from "sst/constructs";
 import { initConfigAWSToPrisma } from "@common/db_orm/prisma/config.aws";
 import { RouterTask } from "@/Tasks/config/api";
 import { createEnvToSST } from "../enviroment/sst";
-import { DOMAIN, SUB_DOMAIN } from "../enviroment/system";
+import {
+  DATABASE_URL,
+  DOMAIN,
+  SUB_DOMAIN_DEV,
+  SUB_DOMAIN_PROD,
+} from "../enviroment/system";
 
 export function ApiStack({ stack }: StackContext) {
   const { PrismaLayer } = initConfigAWSToPrisma(stack);
@@ -13,7 +18,7 @@ export function ApiStack({ stack }: StackContext) {
     architecture: "arm_64",
     logRetention: "one_day",
   });
-
+  const SUB_DOMAIN = stack.stage === "prod" ? SUB_DOMAIN_PROD : SUB_DOMAIN_DEV;
   const api = new Api(stack, "api", {
     customDomain: {
       domainName: `${SUB_DOMAIN}.${DOMAIN}`,
@@ -24,7 +29,7 @@ export function ApiStack({ stack }: StackContext) {
         runtime: "nodejs18.x",
         bind: enviroments,
         environment: {
-          DATABASE_URL: process.env.DATABASE_URL ?? "",
+          DATABASE_URL: DATABASE_URL,
         },
         nodejs: {
           esbuild: {
@@ -37,7 +42,8 @@ export function ApiStack({ stack }: StackContext) {
   });
   RouterTask(api, stack);
   stack.addOutputs({
-    "API_URL:": api.url,
+    "API___AWS:": api.url,
+    API: `http://${SUB_DOMAIN}.${DOMAIN}`,
   });
   return { api };
 }

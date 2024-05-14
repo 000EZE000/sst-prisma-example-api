@@ -22,20 +22,16 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: ${{ secrets.AWS_REGION }}
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
-      # - name: Install dependencies
-      # run: npm install
-      - name: Deploy API
         env:
-          TEST: ${{ secrets.TEST }}
-        # run: npx sst deploy api --stage=prod
-        run: |
-          echo ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          echo ${{ secrets.TEST }}
-          echo $TEST
-          echo tessssss
-          echo tessssss
+          DOMAIN: ${{ secrets.DOMAIN }}
+          SUB_DOMAIN: ${{ secrets.SUB_DOMAIN }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Install dependencies
+        run: npm install
+      - name: Deploy API
+        run: npx sst deploy --stage=prod

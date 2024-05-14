@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/000EZE000/sst-prisma-example-api/compare/v1.1.1...v1.2.0) (2024-05-14)
+
+
+### Bug Fixes
+
+* descoment params input ([35a4200](https://github.com/000EZE000/sst-prisma-example-api/commit/35a42006963b4aff3c56fe0fec8f4139be43567e))
+
+
+### Features
+
+* implemete enviroment to api ([878c641](https://github.com/000EZE000/sst-prisma-example-api/commit/878c6418f7982bd0726ce77eba32d040498bb4fa))
+
 ## [1.1.1](https://github.com/000EZE000/sst-prisma-example-api/compare/v1.1.0...v1.1.1) (2024-05-11)
 
 

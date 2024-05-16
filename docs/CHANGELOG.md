@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/000EZE000/sst-prisma-example-api/compare/v1.2.0...v1.2.1) (2024-05-16)
+
+
+### Bug Fixes
+
+* deploy ([f97aa8e](https://github.com/000EZE000/sst-prisma-example-api/commit/f97aa8ec83aee9dc361c1a9695fcc1922733d3d4))
+* finish error deploy ([139b736](https://github.com/000EZE000/sst-prisma-example-api/commit/139b7367c88a472780dc9a7754c19c491f1e6619))
+* merge fix ([5eb2e1c](https://github.com/000EZE000/sst-prisma-example-api/commit/5eb2e1c267ec93a5a576691976169229d78cfec7))
+
 # [1.2.0](https://github.com/000EZE000/sst-prisma-example-api/compare/v1.1.1...v1.2.0) (2024-05-14)
 
 ### Bug Fixes

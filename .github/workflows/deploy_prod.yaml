@@ -28,8 +28,8 @@ jobs:
         with:
           node-version: "lts/*"
         env:
-          DOMAIN: ${{ vars.DOMAIN }}
-          SUB_DOMAIN_PROD: ${{ vars.SUB_DOMAIN_PROD }}
+          DOMAIN: ${{ secrets.DOMAIN }}
+          SUB_DOMAIN_PROD: ${{ secrets.SUB_DOMAIN_PROD }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: see var
         run: echo $SUB_DOMAIN_PROD

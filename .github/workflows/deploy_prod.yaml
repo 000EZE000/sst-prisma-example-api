@@ -29,7 +29,7 @@ jobs:
           node-version: "lts/*"
         env:
           DOMAIN: ${{ secrets.DOMAIN }}
-          SUB_DOMAIN: ${{ secrets.SUB_DOMAIN }}
+          SUB_DOMAIN_PROD: ${{ secrets.SUB_DOMAIN_PROD }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: Install dependencies
         run: npm install

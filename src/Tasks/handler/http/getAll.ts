@@ -1,12 +1,9 @@
 import { service } from "../../config/inversify.config";
 import { convertResponseHandlerToJson } from "../../helpers/convertToJson";
-// import { HTTP_STATUS } from "@/common/http_response";
-import { Handler } from "./type";
 import { ApiHandler } from "sst/node/api";
-// import { Config } from "sst/node/config";
-// import { getEnvToSST_2 } from "@/Tasks/config/config.env";
+import { Handler } from "./type";
 
-export const handler = ApiHandler(async (_event) => {
+export const handler: Handler = async (_event) => {
   try {
     const responseService = await service.getAll();
     const convert = convertResponseHandlerToJson(responseService);
@@ -17,4 +14,4 @@ export const handler = ApiHandler(async (_event) => {
       body: JSON.stringify({ content: "error server" }),
     };
   }
-});
+};

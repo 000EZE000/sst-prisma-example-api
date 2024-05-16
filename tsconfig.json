@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
-  "exclude": ["packages"],
+  "exclude": ["packages", "src"],
   "include": ["src/**/*.ts"],
   "compilerOptions": {
     "baseUrl": ".",
@@ -9,9 +9,10 @@
       "@tasks/*": ["./src/Tasks/*"],
       "@common/*": ["./src/common/*"]
     },
-    "module": "esnext",
+    "target": "es5",
+    "module": "commonjs",
     "lib": ["es6", "dom"],
-    "target": "ES2016",
+    "types": ["reflect-metadata"],
     "strict": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,

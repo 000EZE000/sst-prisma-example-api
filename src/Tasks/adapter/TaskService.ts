@@ -1,7 +1,7 @@
-import { prisma } from "@/common/db_orm/prisma/config";
+import { prisma } from "../../common/db_orm/prisma/config";
 import TaskRepository from "../repository/TaskRepositoty";
 import { injectable } from "inversify";
-import { HTTP_STATUS } from "@/common/http_response";
+import { HTTP_STATUS } from "../../common/http_response";
 import { Task } from "../domain/Task";
 import { ITaskService } from "../port/ITaskService";
 import { validationBodyCreateTask } from "../helpers/validation/body/create";

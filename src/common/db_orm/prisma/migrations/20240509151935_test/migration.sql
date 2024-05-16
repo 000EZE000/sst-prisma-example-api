@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE `Task` (
-    `id` VARCHAR(191) NOT NULL,
+    `id` INTEGER NOT NULL,
     `title` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
 

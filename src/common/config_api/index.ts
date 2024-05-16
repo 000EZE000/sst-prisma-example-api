@@ -4,6 +4,7 @@ import {
   preparePrismaLayerFiles,
 } from "@common/db_orm/prisma/config.aws";
 import { RouterTask } from "@/Tasks/config/api";
+import * as lambda from "aws-cdk-lib/aws-lambda";
 import { createEnvToSST } from "../enviroment/sst";
 import {
   DATABASE_URL,
@@ -11,31 +12,30 @@ import {
   SUB_DOMAIN_DEV,
   SUB_DOMAIN_PROD,
 } from "../enviroment/system";
-import * as lambda from "aws-cdk-lib/aws-lambda";
+
 export function ApiStack({ stack }: StackContext) {
-  // const { PrismaLayer } = initConfigAWSToPrisma(stack);
   preparePrismaLayerFiles();
   const PrismaLayer = new lambda.LayerVersion(stack, "PrismaLayer", {
     description: "Prisma layer",
     code: lambda.Code.fromAsset("./layers/prisma"),
   });
   const enviroments = createEnvToSST(stack);
-  stack.setDefaultFunctionProps({
-    memorySize: "128 MB",
-    runtime: "nodejs18.x",
-    architecture: "arm_64",
-    logRetention: "one_day",
-  });
+  // stack.setDefaultFunctionProps({
+  //   memorySize: "128 MB",
+  //   runtime: "nodejs18.x",
+  //   architecture: "arm_64",
+  //   logRetention: "one_day",
+  // });
   const SUB_DOMAIN = stack.stage === "prod" ? SUB_DOMAIN_PROD : SUB_DOMAIN_DEV;
   const api = new Api(stack, "api", {
     // customDomain: {
-    //   domainName: `${SUB_DOMAIN}.${DOMAIN}`,
+    // domainName: `${SUB_DOMAIN}.${DOMAIN}`,
     //   hostedZone: DOMAIN,
     // },
     defaults: {
       function: {
         runtime: "nodejs18.x",
-        bind: enviroments,
+        // bind: enviroments,
         environment: {
           DATABASE_URL: DATABASE_URL,
         },

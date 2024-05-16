@@ -33,6 +33,7 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: see var
         run: echo $SUB_DOMAIN_PROD
+      - name: see var 2
         run: echo $DOMAIN
       - name: install dependencies
         run: npm install

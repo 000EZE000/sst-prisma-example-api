@@ -32,9 +32,8 @@ jobs:
           SUB_DOMAIN_PROD: ${{ vars.SUB_DOMAIN_PROD }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: see var
-        run: |
-          echo $SUB_DOMAIN_PROD
-          echo $DOMAIN
+        run: echo $SUB_DOMAIN_PROD
+        run: echo $DOMAIN
       - name: install dependencies
         run: npm install
       - name: Generate Prisma

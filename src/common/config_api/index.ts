@@ -14,7 +14,7 @@ import {
 
 export function ApiStack({ stack }: StackContext) {
   preparePrismaLayerFiles();
-  const { PrismaLayer } = initConfigAWSToPrisma(stack)
+  const { PrismaLayer } = initConfigAWSToPrisma(stack);
   const enviroments = createEnvToSST(stack);
   stack.setDefaultFunctionProps({
     memorySize: "128 MB",
@@ -24,10 +24,10 @@ export function ApiStack({ stack }: StackContext) {
   });
   const SUB_DOMAIN = stack.stage === "prod" ? SUB_DOMAIN_PROD : SUB_DOMAIN_DEV;
   const api = new Api(stack, "api", {
-    // customDomain: {
-    // domainName: `${SUB_DOMAIN}.${DOMAIN}`,
-    //   hostedZone: DOMAIN,
-    // },
+    customDomain: {
+      domainName: `${SUB_DOMAIN}.${DOMAIN}`,
+      hostedZone: DOMAIN,
+    },
     defaults: {
       function: {
         runtime: "nodejs18.x",
@@ -46,8 +46,8 @@ export function ApiStack({ stack }: StackContext) {
   });
   RouterTask(api, stack);
   stack.addOutputs({
-    "URL |<| AWS": api.url,
-    "URL |<| DOMAIN": `http://${SUB_DOMAIN}.${DOMAIN}`,
+    URLxxxAWS: api.url,
+    URLxxxDOMAIN: `https://${SUB_DOMAIN}.${DOMAIN}`,
   });
   return { api };
 }

@@ -41,3 +41,7 @@ jobs:
         run: npx prisma generate
       - name: Deploy API
         run: npx sst deploy --stage=prod
+        env:
+          DOMAIN: ${{ secrets.DOMAIN }}
+          SUB_DOMAIN_PROD: ${{ secrets.SUB_DOMAIN_PROD }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}

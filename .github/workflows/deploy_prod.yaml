@@ -28,10 +28,14 @@ jobs:
         with:
           node-version: "lts/*"
         env:
-          DOMAIN: ${{ secrets.DOMAIN }}
-          SUB_DOMAIN_PROD: ${{ secrets.SUB_DOMAIN_PROD }}
+          DOMAIN: ${{ vars.DOMAIN }}
+          SUB_DOMAIN_PROD: ${{ vars.SUB_DOMAIN_PROD }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      - name: Install dependencies
+      - name: see var
+        run: |
+          echo $SUB_DOMAIN_PROD
+          echo $DOMAIN
+      - name: install dependencies
         run: npm install
       - name: Generate Prisma
         run: npx prisma generate
